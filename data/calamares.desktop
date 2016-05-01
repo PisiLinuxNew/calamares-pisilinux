@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Qt;System;
+Comment[tr_TR]=Pisi Linux Sistem Yükleyici
+Comment=Pisi Linux — System Installer
+Exec=kdesu calamares
+GenericName[tr_TR]=Pisi Linux Sistem Yükleyici
+GenericName=Pisi Linux — System Installer
+Icon=calamares
+MimeType=
+Name[tr_TR]=kalamar
+Name=calamares
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+TryExec=calamares en_US
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
