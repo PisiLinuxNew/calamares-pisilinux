@@ -40,9 +40,9 @@ def run():
         lines = []
         for line in open(mudur_conf_path, "r").readlines():
             if line.startswith("# keymap="):
-                lines.append('keymap="%s"\n' % keymap)
+                lines.append('keymap=%s\n' % keymap)
             elif line.startswith('# language="tr"'):
-                lines.append('language="%s"\n'% language) 
+                lines.append('language=%s\n'% language) 
             else:
                 lines.append(line)
         open(mudur_conf_path, "w").write("".join(lines))
