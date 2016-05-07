@@ -1,5 +1,5 @@
 ---
 type:       "job"
-name:       "localecfg"
+name:       "mudur"
 interface:  "python"
 script:     "main.py"

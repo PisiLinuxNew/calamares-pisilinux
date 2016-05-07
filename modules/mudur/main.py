@@ -25,16 +25,28 @@ import shutil
 import libcalamares
 
 
+
 def run():
-    """ Copy locale """
 
     install_path = libcalamares.globalstorage.value("rootMountPoint")
 
-    # copy locale cfg target
-    if os.path.exists('/etc/mudur/locale'):
-        shutil.copy2("{!s}/etc/mudur/locale".format(install_path),
-                     "{!s}/etc/mudur/keymap".format(install_path),
-                     "{!s}/etc/mudur/language".format(install_path))
+
+    keymap = open(os.path.join("/etc/mudur/keymap")).read()
+    language = open(os.path.join("/etc/mudur/language")).read()
+    mudur_conf_path = os.path.join(install_path, "etc/conf.d/mudur")
+
+    
+    if os.path.exists(mudur_conf_path):
+        lines = []
+        for line in open(mudur_conf_path, "r").readlines():
+            if line.startswith("# keymap="):
+                lines.append('keymap="%s"\n' % keymap)
+            elif line.startswith('# language="tr"'):
+                lines.append('language="%s"\n'% language) 
+            else:
+                lines.append(line)
+        open(mudur_conf_path, "w").write("".join(lines))
+
 
 
     return None
