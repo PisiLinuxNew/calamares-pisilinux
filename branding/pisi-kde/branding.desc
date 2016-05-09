@@ -1,5 +1,5 @@
 ---
-componentName:  default
+componentName:  pisilinux
 
 strings:
     productName:         Pisi Linux 2.0
@@ -15,8 +15,8 @@ strings:
     releaseNotesUrl:     http://www.pisilinux.org/blog/2016/02/21/pisi-linux-2-0-kde-5-alfa-7/
 
 images:
-    productLogo:         "squid.png"
-    productIcon:         "squid.png"
+    productLogo:         "logo.png"
+    productIcon:         "logo.png"
     productWelcome:      "languages.png"
 
 slideshow:               "show.qml"
