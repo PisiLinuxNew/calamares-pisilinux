@@ -24,7 +24,7 @@ Presentation
     id: presentation
 
     Timer {
-        interval: 20000
+        interval: 10000
         running: true
         repeat: true
         onTriggered: presentation.goToNextSlide()
