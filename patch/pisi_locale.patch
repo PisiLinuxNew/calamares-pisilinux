@@ -1,0 +1,11 @@
+--- calamares-2.2.orig/src/modules/locale/LocalePage.cpp	2015-08-06 12:58:34.000000000 +0300
++++ calamares-2.2/src/modules/locale/LocalePage.cpp	2016-05-17 01:23:38.897394195 +0300
+@@ -240,7 +240,7 @@
+                  << ". Assuming the supported languages are already built into "
+                     "the locale archive.";
+         QProcess localeA;
+-        localeA.start( "locale", QStringList() << "-a" );
++        localeA.start( "cat", QStringList() << "/etc/languages" );
+         localeA.waitForFinished();
+         ba = localeA.readAllStandardOutput();
+     }
