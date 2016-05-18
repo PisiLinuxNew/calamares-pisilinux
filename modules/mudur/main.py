@@ -29,24 +29,26 @@ import libcalamares
 def run():
 
     install_path = libcalamares.globalstorage.value("rootMountPoint")
-
-
-    keymap = open(os.path.join("/etc/mudur/keymap")).read()
-    language = open(os.path.join("/etc/mudur/language")).read()
-    mudur_conf_path = os.path.join(install_path, "etc/conf.d/mudur")
-
     
-    if os.path.exists(mudur_conf_path):
-        lines = []
-        for line in open(mudur_conf_path, "r").readlines():
-            if line.startswith("# keymap="):
-                lines.append('keymap=%s\n' % keymap)
-            elif line.startswith('# language="tr"'):
-                lines.append('language=%s\n'% language) 
+    
+    path = os.path.join(install_path, "etc/locale.conf")
+    
+    mloc = open(path,"r")
+    
+    languages = mloc.readline(2)
+
+  
+    mudur_file_path = os.path.join(install_path, "etc/conf.d/mudur")
+    lines = []
+    for l in open(mudur_file_path, "r").readlines():
+        if l.strip().startswith('language=') or l.strip().startswith('# language='):
+            if languages == "pt":
+                l = 'language="pt_BR"\n'
             else:
-                lines.append(line)
-        open(mudur_conf_path, "w").write("".join(lines))
+                l = 'language="%s"\n' % languages
+        lines.append(l)
 
-
+    open(mudur_file_path, "w").writelines(lines)
+    
 
     return None
