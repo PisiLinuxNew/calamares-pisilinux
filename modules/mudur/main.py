@@ -50,5 +50,15 @@ def run():
 
     open(mudur_file_path, "w").writelines(lines)
     
+    if os.path.exists(os.path.join(install_path, "etc/sudoers")):
+        os.unlink(os.path.join(install_path, "etc/sudoers"))
+    
+
+    source = os.path.join(install_path, "etc/sudoers.orig")
+    target = os.path.join(install_path, "etc/sudoers")
+    
+    shutil.copy(source, target)
+    
+    libcalamares.utils.target_env_call(['chmod', '440' '/etc/sudoers'])
 
     return None
