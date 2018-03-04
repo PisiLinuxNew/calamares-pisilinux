@@ -24,7 +24,7 @@ Presentation
     id: presentation
 
     Timer {
-        interval: 20000
+        interval: 10000
         running: true
         repeat: true
         onTriggered: presentation.goToNextSlide()
@@ -42,9 +42,9 @@ Presentation
         Text {
             anchors.horizontalCenter: background1.horizontalCenter
             anchors.top: background1.bottom
-            text: "Welcome to Pisi Gnu/Linux.<br/>"+
-                  "Pisi Linux is a fork of the (PiSi-based) Pardus operating <br/>"+
-                  "system and its unique technologies"
+            text: "Welcome to Pisi Linux.<br/>"+
+                  "Pisi Linux is an end-user-oriented distribution <br/>"+
+                  "that was developed by an independent community."
             wrapMode: Text.WordWrap
             width: 600
             horizontalAlignment: Text.Center
@@ -63,9 +63,9 @@ Presentation
         Text {
             anchors.horizontalCenter: background2.horizontalCenter
             anchors.top: background2.bottom
-            text: "Pisi Gnu/Linux'a hoşgeldiniz.<br/>"+
-                  "Pisi Linux, (PiSi tabanlı) Pardus dağıtımının ve benzersiz teknolojilerinin<br/>"+
-                  "bir çatalıdır"
+            text: "Pisi Linux'a hoşgeldiniz.<br/>"+
+                  "Pisi Linux, bağımsız bir topluluk tarafından geliştirilen<br/>"+
+                  "son kullanıcı odaklı bir dağıtımdır."
             wrapMode: Text.WordWrap
             width: 600
             horizontalAlignment: Text.Center
