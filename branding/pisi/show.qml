@@ -15,16 +15,24 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import calamares.slideshow 1.0
 
-import QtQuick 2.0;
-import calamares.slideshow 1.0;
-
-Presentation
-{
+Presentation {
     id: presentation
 
+    // Calamares'in seçilen dil kodunu alma (Örn: "tr_TR", "en_US")
+    property string currentLang: {
+        var lang = String(Qt.uiLanguage || "en").split("_")[0].toLowerCase();
+        // Desteklenen diller kontrolü
+        if (lang === "tr") return "tr";
+        if (lang === "en") return "en";
+        return "default"; // Desteklenmeyen dil ise varsayılan
+    }
+
     Timer {
-        interval: 10000
+        interval: 5000
         running: true
         repeat: true
         onTriggered: presentation.goToNextSlide()
@@ -34,7 +42,7 @@ Presentation
 
         Image {
             id: background1
-            source: "slide1.png"
+            source: "slideshow/" + presentation.currentLang + "/slide1.png"
             width: 467; height: 280
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
@@ -42,41 +50,27 @@ Presentation
         Text {
             anchors.horizontalCenter: background1.horizontalCenter
             anchors.top: background1.bottom
-            text: "Welcome to Pisi Linux.<br/>"+
+            property var titleText: ({
+            "tr": "Pisi Linux'a hoşgeldiniz.<br/>"+
+                  "Pisi Linux, bağımsız bir topluluk tarafından geliştirilen<br/>"+
+                  "son kullanıcı odaklı bir dağıtımdır.",
+            "en": "Welcome to Pisi Linux.<br/>"+
                   "Pisi Linux is an end-user-oriented distribution <br/>"+
-                  "that was developed by an independent community."
+                  "that was developed by an independent community.",
+        })
+            text: titleText[presentation.currentLang] || titleText["en"]
+
             wrapMode: Text.WordWrap
             width: 600
             horizontalAlignment: Text.Center
         }
     }
 
-    Slide {
+   Slide {
 
         Image {
             id: background2
-            source: "slide2.png"
-            width: 467; height: 280
-            fillMode: Image.PreserveAspectFit
-            anchors.centerIn: parent
-        }
-        Text {
-            anchors.horizontalCenter: background2.horizontalCenter
-            anchors.top: background2.bottom
-            text: "Pisi Linux'a hoşgeldiniz.<br/>"+
-                  "Pisi Linux, bağımsız bir topluluk tarafından geliştirilen<br/>"+
-                  "son kullanıcı odaklı bir dağıtımdır."
-            wrapMode: Text.WordWrap
-            width: 600
-            horizontalAlignment: Text.Center
-        }
-    }
-
-    Slide {
-
-        Image {
-            id: background3
-            source: "slide3.png"
+            source: "slideshow/" + presentation.currentLang + "slide3.png"
             width: 467; height: 280
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
@@ -93,8 +87,8 @@ Presentation
     Slide {
 
         Image {
-            id: background4
-            source: "slide4.png"
+            id: background3
+            source: "slideshow/" + presentation.currentLang + "slide4.png"
             width: 467; height: 280
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
@@ -111,8 +105,8 @@ Presentation
     Slide {
 
         Image {
-            id: background5
-            source: "slide5.png"
+            id: background4
+            source: "slideshow/" + presentation.currentLang + "slide5.png"
             width: 467; height: 280
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
